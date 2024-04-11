@@ -1,10 +1,531 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World of Warcraft</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем внешний CSS-файл для стилей -->
+    <style>
+       body {
+    background-color: #111927;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(9, 87%, 3%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(218.18, 72%, 47%) 0, transparent 55%);
+}
+        
+.parallax {
+   
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+  .video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+       
+
+        
+        header {
+            background-color: black; /* Черный цвет фона */
+            color: white; /* Белый цвет текста */
+            text-align: center; /* Выравнивание текста по центру */
+            padding: 20px; /* Внутренние отступы */
+        }
+        nav {
+            position: fixed; /* Фиксированное позиционирование */
+            width: 100%; /* Ширина на всю ширину экрана */
+            background-color: black; /* Черный цвет фона */
+            text-align: center; /* Выравнивание по центру */
+            padding: 10px 0; /* Внутренние отступы сверху и снизу */
+            top: 0; /* Положение сверху */
+            z-index: 1000; /* Значение z-index для правильного отображения */
+        }
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px; /* Отступ между пунктами меню */
+        }
+        nav ul li a {
+            color: white; /* Белый цвет текста */
+            text-decoration: none; /* Убираем подчеркивание ссылок */
+        }
+       nav ul li:hover a {
+           color: red; /* Цвет текста при наведении на красный */
+       }
+
+
+         /* Стили для блока с фото и описанием */
+         .photo-section {
+            display: flex; /* Отображение элементов в строку */
+            justify-content: center; /* Выравнивание по центру */
+            flex-wrap: wrap; /* Разрешить перенос элементов на следующую строку */
+        }
+
+        .photo-section .photo-item {
+            margin: 20px; /* Внешние отступы между элементами */
+            position: relative; /* Относительное позиционирование */
+            overflow: hidden; /* Скрытие содержимого, выходящего за пределы блока */
+        }
+
+        .photo-section .photo-item img {
+            width: 300px; /* Ширина изображений */
+            height: 400px; /* Высота изображений */
+            transition: transform 0.5s; /* Плавное изменение при наведении */
+        }
+
+        .photo-section .photo-item:hover img {
+            transform: scale(1.1); /* Увеличение изображения при наведении */
+        }
+
+        .photo-section .photo-item .description {
+            background-color: rgba(0, 0, 0, 0.7); /* Цвет фона описания с прозрачностью */
+            color: white; /* Белый цвет текста */
+            position: absolute; /* Абсолютное позиционирование */
+            bottom: 0; /* Расположение описания снизу */
+            left: 0; /* Расположение описания слева */
+            right: 0; /* Расположение описания справа */
+            padding: 10px; /* Внутренние отступы */
+            opacity: 0; /* Скрываем описание */
+            transition: opacity 0.5s; /* Плавное появление описания */
+        }
+
+        .photo-section .photo-item:hover .description {
+            opacity: 1; /* Показываем описание при наведении */
+        }
+
+
+        .story-container {
+             margin: 80px;
+            padding: 20px;
+            border-radius: 23px;
+    margin-top: 140px; /* Отступ сверху */
+    background-color: rgba(51, 39, 99, 0.8); /* Синий цвет фона с прозрачностью */
+    max-width: 800px; /* Максимальная ширина контейнера для удобства чтения */
+    margin: 0 auto; /* Центрирование по горизонтали */
+    text-align: center; /* Выравнивание текста по центру */
+    color: rgb(239, 231, 231); /* Белый цвет текста */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Плавное изменение цвета фона и тени при hover */
+}
+
+/* Hover эффект */
+.story-container:hover {
+    background-color: rgba(120, 184, 18, 0.7); /* Светлый цвет фона с прозрачностью при hover */
+    box-shadow: 0 0  90px rgb(54, 210, 54); /* Зеленая тень по контуру при hover */
+}
+
+        .historyLock{
+            text-align: center;
+            color: #bd3d23;
+        }
+        .mainText{
+            /*color: #32dc17;*/
+            background: linear-gradient(90deg,#32dc17,#ff003c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+
+        }
+        .centered-section {
+
+            background-color: rgba(51, 39, 99, 0.8); /* Синий цвет фона с прозрачностью */
+            max-width: 800px; /* Максимальная ширина контейнера для удобства чтения */
+            margin: 140px auto; /* Центрирование по горизонтали */
+            text-align: center; /* Выравнивание текста по центру */
+            color: rgb(236, 128, 128); /* Белый цвет текста */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Плавный переход цвета фона и тени */
+            border-radius: 10px; /* Закругление углов */
+            padding: 20px; /* Поля вокруг содержимого */
+        }
+
+        /* Стили для эффекта hover */
+        .centered-section:hover {
+            background-color: rgba(113, 119, 225, 0.2); /* Изменение цвета фона с прозрачностью при наведении */
+            box-shadow: 0 0 10px rgba(23, 185, 226, 1.5); /* Добавление тени при наведении */
+        }
+
+        .carousel-container {
+      width: 1200px;
+      height: 900px;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-slide {
+      min-width: 900px; /* Ширина каждого слайда */
+      height: 900px; /* Высота каждого слайда */
+      flex: 0 0 auto;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Для кнопок навигации */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: none;
+      color: #333;
+      font-size: 24px;
+      padding: 10px;
+      z-index: 1;
+    }
+
+    .prev-btn {
+      left: 10px;
+    }
+
+    .next-btn {
+      right: 10px;
+    }
+    footer {
+            
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+         
+            bottom: 0; /* расположение внизу */
+        }
+        a {
+            color: white; /* Установка белого цвета для ссылки */
+            text-decoration: none; /* Удаление подчеркивания */
+        }
+        .section {
+         
+    background-color: rgba(56, 40, 123, 0.8); /* Синий цвет фона с прозрачностью */
+    max-width: 800px; /* Максимальная ширина контейнера для удобства чтения */
+    margin: 0 auto; /* Центрирование по горизонтали */
+    text-align: center; /* Выравнивание текста по центру */
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px; /* Добавим немного внутреннего отступа для контента */
+    border-radius: 25px; /* Радиус границы */
+     /* Прозрачность 30% черного цвета */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Добавляем плавное изменение цвета и тени */
+  }
+  .section:hover {
+    background-color: rgb(99, 203, 215); /* Изменяем цвет фона при наведении на секцию */
+    box-shadow: 0 0 70px rgb(147, 241, 147); /* Добавляем зеленую тень при наведении */
+  }
+
+  .youtube-video {
+    text-align: center; /* Выравниваем содержимое по центру */
+  }
+  .youtube-video iframe {
+    display: inline-block; /* Делаем iframe блочным элементом */
+  }
+
+  .photo-gallery {
+    display: flex; /* Размещаем фотографии в ряд */
+    justify-content: center; /* Центрируем фотографии по горизонтали */
+    margin-top: 50px; /* Отступ сверху */
+  }
+  .photo {
+    margin: 10px; /* Отступы между фотографиями */
+    overflow: hidden; /* Обрезаем содержимое, чтобы убрать выступающие части */
+    transition: transform 0.3s; /* Добавляем плавное изменение масштаба при наведении */
+  }
+  .photo:hover {
+    transform: scale(1.2); /* Увеличиваем фотографию на 20% при наведении */
+  }
+
+
+
+
+  .photo-Last {
+    padding: 90px;
+    display: flex; /* Размещаем фотографии в ряд */
+    justify-content: center; /* Центрируем фотографии по горизонтали */
+    margin-top: 50px; /* Отступ сверху */
+    width: 1200px; /* Ширина секции */
+    height: 500px; /* Высота секции */
+  }
+  .photo {
+    margin: 30px; /* Отступы между фотографиями */
+    overflow: hidden; /* Обрезаем содержимое, чтобы убрать выступающие части */
+    transition: transform 0.3s; /* Добавляем плавное изменение масштаба при наведении */
+  }
+  .photo:hover {
+    transform: scale(1.40); /* Увеличиваем фотографию на 40% при наведении */
+    box-shadow: 0 0 70px rgba(110, 230, 11, 0.5); /* Добавляем тень по контуру при наведении */
+  }
+  
+
+        
+
+    </style>
 </head>
-<body>
-$END$
+<body class="body">
+
+    <header>
+        <h1 class="mainText">Среди теней рождается власть.(Adwinit)</h1>
+    </header>
+
+    <section class="parallax">
+        <div class="video-container">
+            <video class="video" autoplay loop muted>
+                <source src="810586568605108139.MOV" type="video/mp4"> <!-- Замените "810586568605108139.MOV" на URL вашего видео -->
+            </video>
+        </div>
+    </section>
+
+
+    <nav>
+        <!-- Здесь размещается навигационное меню -->
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#history">История</a></li>
+            <li><a href="#magAdwinit">Маг Тьмы</a></li>
+            <li><a href="#andrei">Adwinit</a></li>
+        </ul>
+    </nav>
+    
+    <h2 class="historyLock">История Adwinita</h2>
+    <div class="youtube-video">
+        <!-- Вставляем второе видео -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/k273dWs2tXE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       
+      </div>
+
+
+    <div class="story-container">
+    
+        <p>
+            В древние времена, на землях Азерота, процветала эпоха великих магов и могущественных колдунов. Среди них выделялся один - Варлок. Его происхождение окутано тайной, а его сила превосходила представление об обычных магах.
+            Варлок стремился к знанию, недоступному обычным людям. Он искал тайные знания в самых темных уголках мира, погружаясь в древние свитки и разгадывая запретные тайны. Его амбиции знали границы лишь в его собственном воображении.
+            Но с каждым шагом к могуществу, Варлок погружался все глубже во тьму. Его душа становилась все более окаменелой и лишенной света. Он обрел силу, но потерял свою человечность.
+            Наконец, Варлок достиг вершины своего магического пути, став мастером темной магии. Он обрел способность призывать демонов и манипулировать тьмой как никто другой. Но эта сила имела свою цену - он был проклят тем, что он так стремился овладеть.
+            Так началась легенда Варлока, чье имя стало символом ужаса и разрушения. Он стал не только мастером темной магии, но и ее учителем, распространяя свое зловещее влияние по всему миру. Его последователи, Варлоки, восхищались его силой и искали его благословения в своих черных ритуалах.
+            Таким образом, Варлок взошел на вершину магической иерархии, но его цена была высока. Его сила привела к разрушению его собственной души, оставляя его обреченным на вечные муки и одиночество.
+        </p>
+    </div>
+    <div class="photo-section" id="history">
+        <div class="photo-item">
+            <img src="Iq9274.jpg" alt="Photo 1">
+            <div class="description">Жил был прото паладин</div>
+        </div>
+        <div class="photo-item">
+            <img src="waip.jpg" alt="Photo 2">
+            <div class="description">Он всегда вайпался на треше в ЦЛК</div>
+        </div>
+        <div class="photo-item">
+            <img src="lok.jpg" alt="Photo 3">
+            <div class="description">Гулдан дал ему прибухнуть темного пива с скверны</div>
+        </div>
+        <div class="photo-item">
+            <img src="lok1.jpg" alt="Photo 4">
+            <div class="description">И почуствовал Adwinit с будуна "Сила во тьме, сила внутри."</div>
+        </div>
+    </div>
+    <div class="youtube-video">
+        <!-- Вставьте скопированный HTML-код для вставки видео YouTube здесь -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1m7eB0Hxqf8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    <div class="centered-section">
+        <h2>Стих о маге тьмы Adwinit</h2>
+        
+            Средь темных сил и магии злой,<br>
+            Властелин тьмы, волшебный страж.<br>
+            Варлок, властью демонов славен,<br>
+            Под светлым небом мира дряхл.<br><br>
+            
+            В его власти лежат миры два,<br>
+            И тенью души он играет.<br>
+            Его мощь - безгранична сила,<br>
+            Но вечно в сердце огонь пылает.<br><br>
+            
+            Варлок, упиваясь властью тьмы,<br>
+            Стремится к граням неведомым.<br>
+            Он владыка беспощадный,<br>
+            Сердце его - сталь нечистым.<br><br>
+            
+            Так песня о варлоке звучит,<br>
+            В мире, где силы и судьбы сплетут.<br>
+            Из глубин тьмы он поднимается,<br>
+            И страх в сердцах людей завивает.<br>
+       
+    </div>
+    <br>
+    
+
+
+
+<div class="carousel-container" id="magAdwinit">
+    <div class="carousel-wrapper">
+      <div class="carousel-slide">
+        <img src="pvp.jpeg" alt="Slide 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="IMG_9276.JPG" alt="Slide 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="IMG_9275.JPG" alt="Slide 3">
+      </div>
+      <!-- Добавьте дополнительные слайды по мере необходимости -->
+    </div>
+  
+    <!-- Навигация для переключения слайдов -->
+    <button class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</button>
+    <button class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</button>
+  </div>
+  
+  <script>
+    let slideIndex = 0;
+  
+    function showSlides() {
+      const slides = document.querySelectorAll('.carousel-slide');
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      } else if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+      }
+  
+      const offset = -slideIndex * slides[0].offsetWidth;
+      document.querySelector('.carousel-wrapper').style.transform = `translateX(${offset}px)`;
+    }
+  
+    function nextSlide() {
+      slideIndex++;
+      showSlides();
+    }
+  
+    function prevSlide() {
+      slideIndex--;
+      showSlides();
+    }
+  
+    // Запускаем карусель при загрузке страницы
+    showSlides();
+  </script>
+  <section class="section">
+    <h1>Услуги Adwinit</h1>
+    <h3>Вайпнуть рейд в 25хм <br>
+        Не вынести осквернение на личе<br>
+        Заагрить треш в Рс <br>
+        Попрошайничать в Даланаре<br>
+        Афкшить на Бг<br>
+        Занести на синдре глыбу в рейд<br>
+        Спрыгнуть с кораблей в начале боя<br>
+        Гонять кабанчико по дуратару <br>
+
+
+    </h3>
+  </section>
+
+  <div class="photo-gallery">
+    <div class="photo">
+      <img src="car111.jpg" alt="Photo 1" width="200">
+    </div>
+    <div class="photo">
+      <img src="car112.jpg" alt="Photo 2" width="200">
+    </div>
+    <div class="photo">
+      <img src="pic2.jpg.webp" alt="Photo 3" width="200">
+    </div>
+    <div class="photo">
+        <img src="car44.jpg.webp" alt="Photo 3" width="200">
+      </div>
+
+    
+  </div>
+  <h2 style="text-align: center; color: #bd3d23;"> Вспомни в чем сила </h2>
+  <section class="photo-Last">
+   
+    <div class="photo">
+      <img src="x544.jpeg" alt="Photo 1" width="200">
+    </div>
+    <div class="photo">
+      <img src="x52.jpeg" alt="Photo 2" width="200">
+    </div>
+    <div class="photo">
+      <img src="x53.jpeg" alt="Photo 3" width="200">
+    </div>
+  </section>
+
+    <div class="video-container1">
+        <video class="video" autoplay loop muted style="height: 900px;"> <!-- Замените значение 400px на нужную вам высоту -->
+            <source src="shot.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+  <div class="photo-section" id="andrei">
+    <div class="photo-item">
+        <img src="курю.jpg" alt="Photo 1">
+        <div class="description">Варлок Adwinit, во тьме великий,
+            Словно бог, властью одарен.
+            Мечет молнии, вызывает страх,
+            Всех он победит, в этой темной схватке.</div>
+    </div>
+    <div class="photo-item">
+        <img src="белаямафка.jpg" alt="Photo 2">
+        <div class="description">Варлок Adwinit, властелин страха,
+            Свирепый в битве, безжалостный.
+            Тьма его арена, а смерть — игра,
+            Убивает всех, кто смел ему встать.</div>
+    </div>
+    <div class="photo-item">
+        <img src="сэлфи.jpg" alt="Photo 3">
+        <div class="description">Adwinit, во тьме грозный вождь,
+            Смертью пишет он свой закон.
+            Тьма его щит, а магия меч,
+            Никто не спасется от его речи.</div>
+    </div>
+    <div class="photo-item">
+        <img src="брутал.jpg" alt="Photo 4">
+        <div class="description">Варлок Adwinit, властный в тьме,
+            Смертью пляшет, как танцор ночи.
+            Магия пламени, демонов рев,
+            Непобедим, его власть над всем.</div>
+    </div>
+</div>
+    <div class="visme_d" data-title="Untitled Project" data-url="dm0308ok-untitled-project" data-domain="forms" data-full-page="false" data-min-height="500px" data-form-id="55979"></div>
+    <script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script>
+      
+
+    <footer>
+    
+        <a href="https://www.facebook.com/profile.php?id=100009431970464">Adwinit Live Adress</a>
+        <br>
+        <br>
+        <div class="map-container">
+        "<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d83436.23451569886!2d16.5244315!3d49.1933063!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471295b5a40eb9f3%3A0x7b632d581f033a91!2sVIDA*21%20science%20center!5e0!3m2!1sru!2str!4v1712794718956!5m2!1sru!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+        </div>
+        <p>&copy; 2024 World of Warcraft. All rights reserved.</p>
+    </footer>
+   
+    
 </body>
 </html>
